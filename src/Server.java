@@ -1,6 +1,7 @@
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Scanner;
 
 public class Server {
     ServerSocket server;
@@ -40,22 +41,12 @@ public class Server {
     }
 
     private void runProtocol() {
+        Scanner tgb = new Scanner(System.in);
         System.out.println("chatting...");
-        out.println("Welcome!");
-        out.println("What's your name?");
-        String name = null;
-        try {
-            name = in.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        System.out.println("Client " + name + " is here");
-        out.println("Nice to see you, " + name);
-        out.flush();
-        try {
-            client.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        String msg = "";
+        while (!msg.equals("QUIT")) {
+            msg = tgb.nextLine();
+            out.println("SERVER: " + msg);
         }
     }
 
@@ -63,6 +54,19 @@ public class Server {
         Server s = new Server(1234);
         s.acceptClient();
         s.getStreams();
+        ListenerThread l = new ListenerThread(s.in, System.out);
+        Thread listener = new Thread(l);
+        listener.start();
         s.runProtocol();
+        listener.stop();
+        s.shutdown();
+    }
+
+    private void shutdown() {
+        try {
+            client.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
