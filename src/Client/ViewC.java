@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ViewC {
+public class ViewC extends JFrame {
     private JPanel root;
     private JTextArea textArea1;
     private JTextField textField1;
@@ -25,6 +25,14 @@ public class ViewC {
 
     public String getInput() {
         return textField1.getText();
+    }
+
+    public JPanel getPanel() {
+        return root;
+    }
+
+    void addRunListener(ActionListener running) {
+        button1.addActionListener(running);
     }
 
 }
