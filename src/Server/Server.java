@@ -1,3 +1,5 @@
+package Server;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -17,7 +19,7 @@ public class Server {
             System.err.println("Failed to open serversocket.");
             e.printStackTrace();
         }
-        System.out.println("Server started...");
+        System.out.println("Server.Server started...");
     }
 
     private void acceptClient() {
