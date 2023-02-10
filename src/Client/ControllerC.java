@@ -12,10 +12,19 @@ public class ControllerC extends JFrame {
         this.theView = theView;
         this.theModel = theModel;
 
+        /*
         this.setContentPane(theView.getPanel());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(600, 600);
         this.setVisible(true);
+        */
+
+        JFrame frame = new JFrame("ViewC");
+        frame.setContentPane(new ViewC().getPanel());
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(600, 600);
+        frame.setVisible(true);
+
 
         this.theView.addRunListener(new runListener());     //idk
     }
@@ -25,6 +34,7 @@ public class ControllerC extends JFrame {
 
 
         }
-
     }
+
+
 }

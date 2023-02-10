@@ -14,7 +14,7 @@ public class ViewC extends JFrame {
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                AddText(getInput() + "\n");
             }
         });
     }
@@ -35,4 +35,11 @@ public class ViewC extends JFrame {
         button1.addActionListener(running);
     }
 
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("ViewC");
+        frame.setContentPane(new ViewC().root);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(600, 600);
+        frame.setVisible(true);
+    }
 }

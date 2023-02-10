@@ -13,3 +13,5 @@ Minns inte exakt så kopierar en del från crypt-projektet
 och försöker göra något vettigt av den grunden. 
 Är också lite osäker vad som ska vara i Model. 
 
+10/2: Fortsatt bygga MVC. Inte kommit långt med 
+Model men resten har gått bra. 
