@@ -15,3 +15,10 @@ och försöker göra något vettigt av den grunden.
 
 10/2: Fortsatt bygga MVC. Inte kommit långt med 
 Model men resten har gått bra. 
+
+16/2: Fortsatte med MVC och skrev om V&C en del 
+från genomgången, View syns nu när start/controller 
+startas. Jag är osäker på vad modelen ska innehålla, 
+om den ska vara sin egen grej med bara lite import 
+från ListenerThread, eller om Model ska importera från 
+Client. Testar mig fram i Model. 

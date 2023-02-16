@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ControllerC extends JFrame {
+public class ControllerC {
     ViewC theView;
     ModelC theModel;        //does this work?
 
@@ -12,29 +12,19 @@ public class ControllerC extends JFrame {
         this.theView = theView;
         this.theModel = theModel;
 
-        /*
-        this.setContentPane(theView.getPanel());
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(600, 600);
-        this.setVisible(true);
-        */
+        theView.getButton1().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                theView.AddText("YOU: " + theView.getInput() + "\n");
+
+            }
+        });
 
         JFrame frame = new JFrame("ViewC");
-        frame.setContentPane(new ViewC().getPanel());
+        frame.setContentPane(theView.getPanel());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(600, 600);
         frame.setVisible(true);
 
-
-        this.theView.addRunListener(new runListener());     //idk
     }
-
-    private class runListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-
-
-        }
-    }
-
-
 }

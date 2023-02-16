@@ -1,38 +1,34 @@
 package Client;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.Objects;
 
-public class ViewC extends JFrame {
+public class ViewC {
     private JPanel root;
     private JTextArea textArea1;
     private JTextField textField1;
     private JButton button1;
 
-    public ViewC() {
-        button1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AddText(getInput() + "\n");
-            }
-        });
-    }
-
     public void AddText(String in) {
-        textArea1.append(in);
+        if (!Objects.equals(textField1.getText(), "")) {
+            textArea1.append(in);
+            emptyField();
+        }
     }
 
     public String getInput() {
         return textField1.getText();
+    }
+    public void emptyField() {
+        textField1.setText("");
     }
 
     public JPanel getPanel() {
         return root;
     }
 
-    void addRunListener(ActionListener running) {
-        button1.addActionListener(running);
+    public JButton getButton1() {
+        return button1;
     }
 
     public static void main(String[] args) {

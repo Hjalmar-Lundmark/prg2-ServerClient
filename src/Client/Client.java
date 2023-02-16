@@ -51,7 +51,6 @@ public class Client {
         while (!msg.equals("QUIT")) {
             msg = tgb.nextLine();
             out.println("CLIENT: " + msg);
-            //ViewC.AddText("CLIENT: " + msg);
         }
     }
 

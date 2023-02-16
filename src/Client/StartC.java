@@ -5,6 +5,5 @@ public class StartC {
         ViewC theView = new ViewC();
         ModelC theModel = new ModelC();
         ControllerC theControllertest = new ControllerC(theView,theModel);
-        theControllertest.setVisible(true);
     }
 }
