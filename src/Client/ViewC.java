@@ -9,7 +9,7 @@ public class ViewC {
     private JTextField textField1;
     private JButton button1;
 
-    public void AddText(String in) {
+    public void addText(String in) {
         if (!Objects.equals(textField1.getText(), "")) {
             textArea1.append(in);
             emptyField();
@@ -31,11 +31,11 @@ public class ViewC {
         return button1;
     }
 
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("ViewC");
-        frame.setContentPane(new ViewC().root);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(600, 600);
-        frame.setVisible(true);
+    public JTextArea getTextArea1() {
+        return textArea1;
+    }
+
+    public JTextField getTextField1() {
+        return textField1;
     }
 }

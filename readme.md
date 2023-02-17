@@ -22,3 +22,7 @@ startas. Jag är osäker på vad modelen ska innehålla,
 om den ska vara sin egen grej med bara lite import 
 från ListenerThread, eller om Model ska importera från 
 Client. Testar mig fram i Model. 
+
+17/2: Gjort mycket i Klientens Model och Controller. 
+Inte lyckats med ett fungerande protocol än dock. 
+
