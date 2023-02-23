@@ -30,7 +30,9 @@ public class ControllerS {
         theView.getButton1().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                theModel.out.println("Server: " + theView.getInput() + "\n");
+                if (theView.getInput() != "") {
+                    theModel.out.println("Server: " + theView.getInput() + "\n");
+                }
                 theView.addText("YOU: " + theView.getInput() + "\n");
             }
         });
