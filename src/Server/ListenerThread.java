@@ -1,14 +1,16 @@
 package Server;
 
+import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintStream;
 
 public class ListenerThread implements Runnable{
     private BufferedReader in;
-    private PrintStream out;
+    //private PrintStream out;
+    private JTextArea out;
 
-    public ListenerThread(BufferedReader in, PrintStream out) {
+    public ListenerThread(BufferedReader in, JTextArea out) {
         this.in = in;
         this.out = out;
     }
@@ -22,7 +24,9 @@ public class ListenerThread implements Runnable{
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            out.println(msg);
+            if (msg != "") {
+                out.append(msg + "\n");
+            }
         }
     }
 

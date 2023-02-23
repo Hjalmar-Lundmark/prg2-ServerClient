@@ -26,3 +26,7 @@ Client. Testar mig fram i Model.
 17/2: Gjort mycket i Klientens Model och Controller. 
 Inte lyckats med ett fungerande protocol än dock. 
 
+23/2: Faktiskt gjort att de kopplar upp med varann och 
+nu fungerar skickande av meddelanden åt båda håll. 
+Problemmet var att ListenerThread skrev ut i System.out 
+istället för i View. 

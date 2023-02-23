@@ -54,6 +54,7 @@ public class Client {
         }
     }
 
+    /*
     public static void main(String[] args) {
         Client me = new Client("10.80.47.63", 1234);
         me.getStreams();
@@ -64,6 +65,7 @@ public class Client {
         listener.stop();
         me.shutDown();
     }
+    */
 
     public void shutDown() {
         try {

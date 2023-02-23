@@ -52,6 +52,7 @@ public class Server {
         }
     }
 
+    /*
     public static void main(String[] args) {
         Server s = new Server(1234);
         s.acceptClient();
@@ -63,6 +64,8 @@ public class Server {
         listener.stop();
         s.shutdown();
     }
+
+     */
 
     private void shutdown() {
         try {
