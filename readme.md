@@ -30,3 +30,6 @@ Inte lyckats med ett fungerande protocol än dock.
 nu fungerar skickande av meddelanden åt båda håll. 
 Problemmet var att ListenerThread skrev ut i System.out 
 istället för i View. 
+
+24/2: Gjort en början till "bot / command" funktion 
+och bytt logotyp. Inga problem. 

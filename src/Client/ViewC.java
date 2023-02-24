@@ -12,7 +12,6 @@ public class ViewC {
     public void addText(String in) {
         if (!Objects.equals(textField1.getText(), "")) {
             textArea1.append(in);
-            emptyField();
         }
     }
 

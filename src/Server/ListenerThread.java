@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.Objects;
 
 public class ListenerThread implements Runnable{
     private BufferedReader in;
@@ -24,7 +25,7 @@ public class ListenerThread implements Runnable{
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            if (msg != "") {
+            if (!Objects.equals(msg, "")) {
                 out.append(msg + "\n");
             }
         }

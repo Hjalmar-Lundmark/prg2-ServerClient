@@ -25,7 +25,7 @@ public class ListenerThread implements Runnable{
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            if (msg != "") {
+            if (!Objects.equals(msg, "")) {
                 out.append(msg + "\n");
             }
         }
