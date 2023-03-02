@@ -5,6 +5,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class ControllerC {
@@ -29,7 +31,7 @@ public class ControllerC {
         }
         frame.setIconImage(icon.getImage());
 
-        theModel.start("10.80.47.63", 1234);
+        theModel.start(/*"10.80.47.63"*/ "192.168.0.127", 1234);
         theModel.getStreams();
         ListenerThread l = new ListenerThread(theModel.in, theView.getTextArea1());
         Thread listener = new Thread(l);
@@ -42,6 +44,20 @@ public class ControllerC {
                     theModel.out.println("Stranger: " + theView.getInput() + "\n"); //sends msg to other
                 }
                 theView.addText("YOU: " + theView.getInput() + "\n"); //sends msg in your chat
+
+                //prototype for commands
+                if (theView.getInput().startsWith("!")) {
+                    if (theView.getInput().startsWith("!testcomm")) {
+                        theView.addText("Auto-msg: " + "test Command" + "\n");
+                        theModel.out.println("Auto-msg: " + "test Command" + "\n");
+                    } else if (theView.getInput().startsWith("!time")) {
+                        LocalTime time = LocalTime.now();
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+                        theView.addText("Auto-msg: Current local time is " + time.format(formatter) + "\n");
+                        theModel.out.println("Auto-msg: Current local time is " + time.format(formatter) + "\n");
+                    }
+                }
+
                 theView.emptyField();
             }
         });
