@@ -40,7 +40,6 @@ public class ControllerS {
         Thread listener = new Thread(l);
         listener.start();
 
-        theView.addText("Welcome! Connection connected, Chat with your fellow on the line, or try some commands like '!time', '!temp' or '!temp {place}' \n");
         theModel.out.println("Welcome! Connection connected, Chat with your fellow on the line, or try some commands like '!time', '!temp' or '!temp {place}' \n");
 
         theView.getButton1().addActionListener(new ActionListener() {
@@ -69,7 +68,7 @@ public class ControllerS {
                             place = theView.getInput().split(" ")[1];
                         }
                         if (place.length()<3) {
-                            place = "bygdea";
+                            place = "umea";
                         }
                         String request = "http://api.temperatur.nu/tnu_1.17.php?p=" + place + "&cli=api_demo";
                         String temperature = "";
