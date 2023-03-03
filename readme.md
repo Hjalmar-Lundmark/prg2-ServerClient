@@ -33,3 +33,8 @@ istället för i View.
 
 24/2: Gjort en början till "bot / command" funktion 
 och bytt logotyp. Inga problem. 
+
+02/3: Sjuk :(
+
+03/3: Gjort några commands, ändrat font, 
+gjort input för ip. 

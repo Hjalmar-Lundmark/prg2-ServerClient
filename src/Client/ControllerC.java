@@ -5,9 +5,11 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.net.URL;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
+import java.util.Scanner;
 
 public class ControllerC {
     ViewC theView;
@@ -16,6 +18,8 @@ public class ControllerC {
     public ControllerC(ViewC theView, ModelC theModel) {
         this.theView = theView;
         this.theModel = theModel;
+
+        String ip = JOptionPane.showInputDialog("IP?", null);
 
         JFrame frame = new JFrame("Chat (client)");
         frame.setContentPane(theView.getPanel());
@@ -31,7 +35,8 @@ public class ControllerC {
         }
         frame.setIconImage(icon.getImage());
 
-        theModel.start(/*"10.80.47.63"*/ "192.168.0.127", 1234);
+        if (ip.length() < 6) {ip = "10.80.47.63";}
+        theModel.start(ip, 1234);
         theModel.getStreams();
         ListenerThread l = new ListenerThread(theModel.in, theView.getTextArea1());
         Thread listener = new Thread(l);
@@ -47,18 +52,40 @@ public class ControllerC {
 
                 //prototype for commands
                 if (theView.getInput().startsWith("!")) {
-                    if (theView.getInput().startsWith("!testcomm")) {
+                    if (theView.getInput().startsWith("!test")) {
                         theView.addText("Auto-msg: " + "test Command" + "\n");
                         theModel.out.println("Auto-msg: " + "test Command" + "\n");
-                    } else if (theView.getInput().startsWith("!time")) {
+                    }
+                    else if (theView.getInput().startsWith("!time")) {
                         LocalTime time = LocalTime.now();
                         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
                         theView.addText("Auto-msg: Current local time is " + time.format(formatter) + "\n");
                         theModel.out.println("Auto-msg: Current local time is " + time.format(formatter) + "\n");
                     }
+                    else if(theView.getInput().startsWith("!temp")) {
+                        String place = "";
+                        if (theView.getInput().startsWith("!temp ")) {
+                            place = theView.getInput().split(" ")[1];
+                        }
+                        if (place.length()<3) {
+                            place = "bygdea";
+                        }
+                        String request = "http://api.temperatur.nu/tnu_1.17.php?p=" + place + "&cli=api_demo";
+                        String temperature = "";
+                        try {
+                            URL resource = new URL(request);
+                            Scanner urlScanner = new Scanner(resource.openStream());
+                            String result = urlScanner.nextLine();
+                            temperature = result.split("\"")[23];
+                        } catch (Exception err) {
+                            err.printStackTrace();
+                        }
+                        theView.addText("Auto-msg: Current temperature in " + place + " is " + temperature + " grader celcius \n");
+                        theModel.out.println("Auto-msg: Current temperature in " + place + " is " + temperature + " grader celcius \n");
+                    }
                 }
 
-                theView.emptyField();
+                theView.emptyField(); // empties the input bar
             }
         });
 

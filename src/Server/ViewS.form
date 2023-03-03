@@ -16,6 +16,7 @@
         </constraints>
         <properties>
           <editable value="false"/>
+          <font name="Calibri" size="16" style="0"/>
           <lineWrap value="true"/>
           <margin top="3" left="6" bottom="0" right="6"/>
           <wrapStyleWord value="true"/>
@@ -28,6 +29,7 @@
           </grid>
         </constraints>
         <properties>
+          <font name="Calibri" size="16" style="0"/>
           <text value=""/>
           <toolTipText value="Write here"/>
         </properties>
